@@ -60,3 +60,21 @@ AI-based fitness recommendations (planned)
    
 ---
 This project demonstrates practical implementation of full-stack development concepts and UI design for real-world applications.
+
+
+📸 Project Preview
+
+🏠 Dashboard
+![Dashboard](./ScreenShots/Dashboard.png)
+
+👥 Member Management
+![Members](./ScreenShots/Member.png)
+
+📅 Attendance Tracking
+![Attendance](./ScreenShots/AttendanceModule.png)
+
+🏋️ Classes
+![Classes](./ScreenShots/ClassModule.png)
+
+📩 Inquiries
+![Inquiries](./ScreenShots/InquiryModule.png)
