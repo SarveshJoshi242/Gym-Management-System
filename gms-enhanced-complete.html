@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard GMS</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Tailwind CSS for styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <!-- Custom Google Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+
+<body class="antialiased text-slate-800">
+  <div class="max-w-7xl mx-auto p-4 md:p-8">
+    <!-- Header Section -->
+    <header class="bg-white rounded-lg shadow-sm p-6 mb-8">
+      <div class="flex flex-col md:flex-row items-center justify-between">
+        <div class="flex items-center mb-4 md:mb-0">
+          <div class="bg-blue-600 p-3 rounded-full mr-4">
+            <i class="fas fa-dumbbell text-white text-xl"></i>
+          </div>
+          <div>
+            <h1 class="text-2xl md:text-3xl font-bold text-slate-800">
+              GymPlus Dashboard
+            </h1>
+            <p class="text-slate-600 text-sm md:text-base">
+              Manage Gym Operations Efficiently
+            </p>
+          </div>
+        </div>
+        <div class="text-right">
+          <p class="text-sm text-slate-600">Admin Panel</p>
+          <p id="current-date" class="font-semibold text-slate-800"></p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="bg-white rounded-lg shadow-sm mb-8">
+      <nav class="flex flex-wrap border-b border-gray-200">
+        <button
+          class="tab-button px-6 py-3 font-medium text-sm transition-all tab-active"
+          data-tab="overview"
+        >
+          <i class="fas fa-chart-line mr-2"></i>Overview
+        </button>
+        <button
+          class="tab-button px-6 py-3 font-medium text-sm text-slate-600 hover:text-blue-600 transition-all"
+          data-tab="members"
+        >
+          <i class="fas fa-users mr-2"></i>Members
+        </button>
+        <button
+          class="tab-button px-6 py-3 font-medium text-sm text-slate-600 hover:text-blue-600 transition-all"
+          data-tab="attendance"
+        >
+          <i class="fas fa-clipboard-check mr-2"></i>Attendance
+        </button>
+        <button
+          class="tab-button px-6 py-3 font-medium text-sm text-slate-600 hover:text-blue-600 transition-all"
+          data-tab="classes"
+        >
+          <i class="fas fa-calendar-alt mr-2"></i>Classes
+        </button>
+        <button
+          class="tab-button px-6 py-3 font-medium text-sm text-slate-600 hover:text-blue-600 transition-all"
+          data-tab="inquiries"
+        >
+          <i class="fas fa-envelope mr-2"></i>Inquiries
+        </button>
+      </nav>
+    </div>
+
+    <!-- Tab Content -->
+    <!-- Overview Tab -->
+    <div id="overview" class="tab-content">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <!-- Stats Cards -->
+        <div class="bg-blue-600 text-white p-6 rounded-lg shadow-lg">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-blue-100 text-sm font-medium">Total Members</p>
+              <p id="total-members" class="text-2xl font-bold">0</p>
+            </div>
+            <i class="fas fa-users text-3xl opacity-80"></i>
+          </div>
+        </div>
+        
+        <div class="bg-green-600 text-white p-6 rounded-lg shadow-lg">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-green-100 text-sm font-medium">Today's Attendance</p>
+              <p id="attendance-percentage" class="text-2xl font-bold">0%</p>
+            </div>
+            <i class="fas fa-clipboard-check text-3xl opacity-80"></i>
+          </div>
+        </div>
+        
+        <div class="bg-purple-600 text-white p-6 rounded-lg shadow-lg">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-purple-100 text-sm font-medium">Active Classes</p>
+              <p id="total-classes" class="text-2xl font-bold">0</p>
+            </div>
+            <i class="fas fa-calendar-alt text-3xl opacity-80"></i>
+          </div>
+        </div>
+        
+        <div class="bg-orange-600 text-white p-6 rounded-lg shadow-lg">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-orange-100 text-sm font-medium">Pending Inquiries</p>
+              <p id="total-inquiries" class="text-2xl font-bold">0</p>
+            </div>
+            <i class="fas fa-envelope text-3xl opacity-80"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="bg-white rounded-lg shadow-sm p-6">
+        <h2 class="text-xl font-bold mb-4">Quick Actions</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <button
+            onclick="switchTab('members')"
+            class="bg-blue-50 hover:bg-blue-100 border border-blue-200 p-4 rounded-lg transition-all"
+          >
+            <i class="fas fa-user-plus text-blue-600 text-2xl mb-2"></i>
+            <p class="text-sm font-medium text-blue-800">Add New Member</p>
+          </button>
+          
+          <button
+            onclick="switchTab('attendance')"
+            class="bg-green-50 hover:bg-green-100 border border-green-200 p-4 rounded-lg transition-all"
+          >
+            <i class="fas fa-check-circle text-green-600 text-2xl mb-2"></i>
+            <p class="text-sm font-medium text-green-800">Mark Attendance</p>
+          </button>
+          
+          <button
+            onclick="switchTab('classes')"
+            class="bg-purple-50 hover:bg-purple-100 border border-purple-200 p-4 rounded-lg transition-all"
+          >
+            <i class="fas fa-eye text-purple-600 text-2xl mb-2"></i>
+            <p class="text-sm font-medium text-purple-800">View Classes</p>
+          </button>
+          
+          <button
+            onclick="switchTab('inquiries')"
+            class="bg-orange-50 hover:bg-orange-100 border border-orange-200 p-4 rounded-lg transition-all"
+          >
+            <i class="fas fa-reply text-orange-600 text-2xl mb-2"></i>
+            <p class="text-sm font-medium text-orange-800">Handle Inquiries</p>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Members Tab -->
+    <div id="members" class="tab-content hidden">
+      <div class="bg-white rounded-lg shadow-sm p-6">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold text-slate-800 mb-4 md:mb-0">
+            Member Management
+          </h2>
+          <button
+            id="add-member-btn"
+            class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-all"
+          >
+            <i class="fas fa-plus mr-2"></i>Add New Member
+          </button>
+        </div>
+
+        <!-- Add Member Form (Initially Hidden) -->
+        <div id="add-member-form" class="mb-6 p-4 bg-gray-50 rounded-lg hidden">
+          <h3 class="text-lg font-semibold mb-4">Add New Member</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <input
+              type="text"
+              id="member-name"
+              placeholder="Full Name"
+              class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+            <input
+              type="email"
+              id="member-email"
+              placeholder="Email Address"
+              class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+            <select
+              id="member-membership"
+              class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            >
+              <option value="">Select Membership</option>
+              <option value="Basic">Basic</option>
+              <option value="Premium">Premium</option>
+              <option value="VIP">VIP</option>
+            </select>
+          </div>
+          <div class="mt-4 flex gap-4">
+            <button
+              onclick="saveMember()"
+              class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg transition-all"
+            >
+              Save Member
+            </button>
+            <button
+              onclick="cancelAddMember()"
+              class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg transition-all"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+
+        <!-- Members List -->
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse">
+            <thead>
+              <tr class="border-b border-gray-200">
+                <th class="text-left py-3 px-4 font-semibold text-gray-700">
+                  ID
+                </th>
+                <th class="text-left py-3 px-4 font-semibold text-gray-700">
+                  Name
+                </th>
+                <th class="text-left py-3 px-4 font-semibold text-gray-700">
+                  Email
+                </th>
+                <th class="text-left py-3 px-4 font-semibold text-gray-700">
+                  Membership
+                </th>
+                <th class="text-left py-3 px-4 font-semibold text-gray-700">
+                  Join Date
+                </th>
+                <th class="text-left py-3 px-4 font-semibold text-gray-700">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody id="members-list">
+              <!-- Members will be dynamically loaded here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEW: Attendance Tab -->
+    <div id="attendance" class="tab-content hidden">
+      <div class="bg-white rounded-lg shadow-sm p-6">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold text-slate-800 mb-4 md:mb-0">
+            Attendance Management
+          </h2>
+          <div class="flex gap-4">
+            <input
+              type="date"
+              id="attendance-date"
+              class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+            <button
+              onclick="loadAttendance()"
+              class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-all"
+            >
+              <i class="fas fa-search mr-2"></i>Load Data
+            </button>
+          </div>
+        </div>
+
+        <!-- Attendance Summary -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+          <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+            <div class="flex items-center">
+              <i class="fas fa-check-circle text-green-600 text-2xl mr-3"></i>
+              <div>
+                <p class="text-sm text-green-600 font-medium">Present Today</p>
+                <p id="present-count" class="text-2xl font-bold text-green-800">0</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-red-50 border border-red-200 p-4 rounded-lg">
+            <div class="flex items-center">
+              <i class="fas fa-times-circle text-red-600 text-2xl mr-3"></i>
+              <div>
+                <p class="text-sm text-red-600 font-medium">Absent Today</p>
+                <p id="absent-count" class="text-2xl font-bold text-red-800">0</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+            <div class="flex items-center">
+              <i class="fas fa-percentage text-blue-600 text-2xl mr-3"></i>
+              <div>
+                <p class="text-sm text-blue-600 font-medium">Attendance Rate</p>
+                <p id="attendance-rate" class="text-2xl font-bold text-blue-800">0%</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Attendance List -->
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse">
+            <thead>
+              <tr class="border-b border-gray-200">
+                <th class="text-left py-3 px-4 font-semibold text-gray-700">ID</th>
+                <th class="text-left py-3 px-4 font-semibold text-gray-700">Name</th>
+                <th class="text-left py-3 px-4 font-semibold text-gray-700">Membership</th>
+                <th class="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
+                <th class="text-left py-3 px-4 font-semibold text-gray-700">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="attendance-list">
+              <!-- Attendance records will be dynamically loaded here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Classes Tab -->
+    <div id="classes" class="tab-content hidden">
+      <div class="bg-white rounded-lg shadow-sm p-6">
+        <h2 class="text-2xl font-bold text-slate-800 mb-6">Class Schedule</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="classes-list">
+          <!-- Classes will be dynamically loaded here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Inquiries Tab -->
+    <div id="inquiries" class="tab-content hidden">
+      <div class="bg-white rounded-lg shadow-sm p-6">
+        <h2 class="text-2xl font-bold text-slate-800 mb-6">Customer Inquiries</h2>
+        <div class="space-y-4" id="inquiries-list">
+          <!-- Inquiries will be dynamically loaded here -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
