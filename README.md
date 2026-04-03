@@ -79,4 +79,4 @@ This project demonstrates practical implementation of full-stack development con
 📩 Inquiries
 ![Inquiries](./ScreenShots/InquiryModule.png)
 
-🔗 Live Demo: [https://your-link.com](https://sarveshjoshi242.github.io/Gym-Management-System/)
+🔗 Live Demo: [https://Demo.com](https://sarveshjoshi242.github.io/Gym-Management-System/)
