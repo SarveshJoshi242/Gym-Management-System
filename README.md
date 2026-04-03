@@ -68,7 +68,7 @@ This project demonstrates practical implementation of full-stack development con
 ![Dashboard](./ScreenShots/Dashboard.png)
 
 👥 Member Management
-![Members](./ScreenShots/Member.png)
+![Members](./ScreenShots/MemberModule.png)
 
 📅 Attendance Tracking
 ![Attendance](./ScreenShots/AttendanceModule.png)
@@ -78,3 +78,5 @@ This project demonstrates practical implementation of full-stack development con
 
 📩 Inquiries
 ![Inquiries](./ScreenShots/InquiryModule.png)
+
+🔗 Live Demo: [https://your-link.com](https://sarveshjoshi242.github.io/Gym-Management-System/)
